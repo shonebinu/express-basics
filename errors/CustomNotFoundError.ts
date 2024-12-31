@@ -5,8 +5,6 @@ class CustomNotFoundError extends Error {
     super(message);
     this.statusCode = 404;
     this.name = "NotFoundError";
-
-    Object.setPrototypeOf(this, CustomNotFoundError);
   }
 }
 
