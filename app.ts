@@ -3,15 +3,16 @@ import authorRouter from "./routes/authorRouter";
 import bookRouter from "./routes/bookRouter";
 import indexRouter from "./routes/indexRouter";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname;
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
 
 app.use("/authors", authorRouter);
 app.use("/books", bookRouter);
